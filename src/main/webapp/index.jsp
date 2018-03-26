@@ -48,7 +48,7 @@
         </table>
         <% String error = (String) request.getAttribute( "error");
            if ( error != null) { %>
-           <H2>Error!!</h2>
+           <H2>Error!!!</h2>
            <p><%= error %>
         <% }
         %>
