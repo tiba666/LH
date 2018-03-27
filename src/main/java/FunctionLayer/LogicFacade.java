@@ -1,5 +1,7 @@
 package FunctionLayer;
 
+import DBAccess.OrderExcetion;
+import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
 
 /**
@@ -16,6 +18,12 @@ public class LogicFacade {
         User user = new User(email, password, "customer");
         UserMapper.createUser( user );
         return user;
+    }
+    public static void createOrder(HouseDimensions dimensions, User user)throws OrderExcetion{
+        OrderMapper.createOrdder(dimensions, user);
+    }
+    public static HouseDimensions createHouse(int height, int width, int length){
+        return new HouseDimensions(length, width, height);
     }
 
 }

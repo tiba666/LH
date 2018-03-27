@@ -10,13 +10,27 @@ package FunctionLayer;
  * @author Tiba
  */
 public class HouseDimensions {
-    private final int length,width,high;
+    private int length,width,high;
+    private int orderid;
 
-    public HouseDimensions(int length, int width, int high) {
+    
+
+    public HouseDimensions(int high, int width, int length) {
         this.length = length;
         this.width = width;
         this.high = high;
     }
+
+    public void setOrderid(int orderid) {
+        this.orderid = orderid;
+    }
+
+
+    public int getOrderid() {
+        return orderid;
+    }
+    
+    
 
     public int getLength() {
         return length;

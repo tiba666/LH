@@ -1,5 +1,6 @@
 package PresentationLayer;
 
+import DBAccess.OrderExcetion;
 import FunctionLayer.LoginSampleException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ abstract class Command {
         commands = new HashMap<>();
         commands.put( "login", new Login() );
         commands.put( "register", new Register() );
+        commands.put("showorders",new Order());
     }
 
     static Command from( HttpServletRequest request ) {
@@ -24,6 +26,6 @@ abstract class Command {
     }
 
     abstract String execute( HttpServletRequest request, HttpServletResponse response ) 
-            throws LoginSampleException;
+            throws LoginSampleException, OrderExcetion;
 
 }

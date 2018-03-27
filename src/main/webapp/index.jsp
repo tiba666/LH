@@ -12,7 +12,7 @@
         <title>Welcome page</title>
     </head>
     <body>
-        <h1>Welcome to Sem 2</h1>
+        <h1>Welcome to Sem 2 for lego</h1>
         
         <table>
             <tr><td>Login</td>

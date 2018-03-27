@@ -9,13 +9,13 @@ package FunctionLayer;
  *
  * @author Tiba
  */
-public class Bricks {
+public class BricksPackage {
     
     int  fourXtwoBrick,twoXtwoBrick,oneXtwoBrick;
 
  
 
-    public Bricks(int fourXtwoBrick, int twoXtwoBrick, int oneXtwoBrick) {
+    public BricksPackage(int fourXtwoBrick, int twoXtwoBrick, int oneXtwoBrick) {
         this.twoXtwoBrick = twoXtwoBrick;
         this.oneXtwoBrick = oneXtwoBrick;
         this.fourXtwoBrick = fourXtwoBrick;
