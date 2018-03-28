@@ -23,7 +23,7 @@ public class Delegate extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderExcetion {
         String input = request.getParameter("pagesfinder");
         switch(input){
-            case "order":
+            case "orders":
                 return "order";
             case "showorders":
                 return "showorders";

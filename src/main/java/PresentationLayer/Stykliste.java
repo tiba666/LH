@@ -26,10 +26,11 @@ public class Stykliste extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderExcetion {
         HttpSession session = request.getSession();
+      
         
         List<HouseDimensions> hs = (List) session.getAttribute("showOrders");
         for (HouseDimensions h : hs) {
-            if(h.getOrderid()==(int) session.getAttribute("chose")){
+            if(h.getOrderid()== (int) session.getAttribute("chose")){
                session.setAttribute("ordersStyk", LogicFacade.getTotalBricks(h));
             }
             

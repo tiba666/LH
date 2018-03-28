@@ -15,21 +15,21 @@
         <title>JSP Page</title>
     </head>
     
-        
+    
         
         <% List<HouseDimensions> orders = (List) session.getAttribute("showOrders");
-            for(int i = 0 ; i < orders.size() ; i++){  
-     
-            }
-        %>
-            <form action="FrontController" method="get">
-                <input type="number" name="order" value=<%""%>
+            for (HouseDimensions order : orders) {  %>  
+         
+            <form action="FrontController" method="post">
+          
+            <input type="hidden" name="command" value="stykListe">
+            <input type="number" name="chose" value="<%order.getOrderid();%>">
+            <input type="submit" name="submit" value="<%out.print("order id : " + order.getOrderid());%>">
             </form>
-                  
-             <%
-                out.print(orders.get(i).toString() + "<br />");
-                
-            }
+            
+            
+            <%         
+                }
             %>         
             
         
