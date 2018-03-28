@@ -10,9 +10,13 @@ import FunctionLayer.BricksPackage;
 import FunctionLayer.HouseDimensions;
 
 import FunctionLayer.User;
+import com.mysql.cj.api.x.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,11 +24,11 @@ import java.sql.SQLException;
  */
 public class OrderMapper {
 
-    public static void createOrdder(HouseDimensions houseDimensions, User user) throws OrderExcetion {
+    public static void createOrder(HouseDimensions houseDimensions, User user) throws OrderExcetion {
         try {
 
             Connection con = Connector.connection();
-            String sql = "INSERT INTO orders (userId, height, width, length) VALUES (?,?,?,?) ";
+            String sql = "INSERT INTO orders (User_userId, hight, width, length) VALUES (?,?,?,?) ";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setInt(1, user.getId());
@@ -34,9 +38,32 @@ public class OrderMapper {
 
             ps.executeUpdate();
 
-        } catch (SQLException | ClassNotFoundException ex){
+        } catch (SQLException | ClassNotFoundException ex) {
             throw new OrderExcetion(ex.getMessage());
         }
+    }
+
+    public static List<HouseDimensions> getOrders(int userid) {
+        List<HouseDimensions> list = new ArrayList();
+        try {
+            Connection con = Connector.connection();
+            String sql = "SELECT * FROM orders WHERE User_userId=?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, userid);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                HouseDimensions hd = new HouseDimensions(rs.getInt("hight"), rs.getInt("width"), rs.getInt("length"));
+                hd.setOrderid(rs.getInt("OrderId"));
+                list.add(hd);
+
+            }
+            return list;
+
+        } catch (Exception e) {
+        }
+        return list;
     }
 
     public static void sendOrder(HouseDimensions ordernr) throws OrderExcetion {
@@ -50,12 +77,20 @@ public class OrderMapper {
 //            BricksPackage packaged = cal.calculateBricks(ordernr);
 //            
 //            String sqlPackages = "INSERT INTO orderdetails (";
-
-        } catch (SQLException | ClassNotFoundException ex){
+        } catch (SQLException | ClassNotFoundException ex) {
             throw new OrderExcetion(ex.getMessage());
         }
 
     }
 
+    public static ArrayList<HouseDimensions> comfirmOrder(User user) {
+        if (user.getRole().equals("employee")) {
+            try {
 
+            } catch (Exception e) {
+            }
+
+        }
+        return null;
+    }
 }

@@ -62,9 +62,9 @@ CREATE TABLE IF NOT EXISTS `legohouse`.`orders` (
   `sendt` BIT(1) NOT NULL DEFAULT b'0',
   `confermtime` DATETIME NULL DEFAULT NULL,
   PRIMARY KEY (`OrderId`),
-  INDEX `user` (`User_userId` ASC),
+  INDEX `user` (`userId` ASC),
   CONSTRAINT `orders_ibfk_1`
-    FOREIGN KEY (`User_userId`)
+    FOREIGN KEY (`userId`)
     REFERENCES `legohouse`.`users` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;

@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class Order extends Command {
     
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderExcetion {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderExcetion  {
         int height = Integer.parseInt(request.getParameter("height"));
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
@@ -31,8 +31,8 @@ public class Order extends Command {
         HouseDimensions dimensions = LogicFacade.createHouse(height, width, length);
        
         LogicFacade.createOrder(dimensions, user);
-         return "orderconfirmation"; 
-
+         return user.getRole() + "page"; 
+ 
     }
 
 }

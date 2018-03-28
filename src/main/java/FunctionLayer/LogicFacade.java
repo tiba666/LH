@@ -3,6 +3,7 @@ package FunctionLayer;
 import DBAccess.OrderExcetion;
 import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
+import java.util.List;
 
 /**
  * The purpose of LogicFacade is to...
@@ -20,10 +21,20 @@ public class LogicFacade {
         return user;
     }
     public static void createOrder(HouseDimensions dimensions, User user)throws OrderExcetion{
-        OrderMapper.createOrdder(dimensions, user);
+        OrderMapper.createOrder(dimensions, user);
     }
     public static HouseDimensions createHouse(int height, int width, int length){
         return new HouseDimensions(length, width, height);
     }
+    public static List<HouseDimensions> showUserOrders(int userId){
+          
+        return OrderMapper.getOrders(userId);
+        
+    }
+    public static BricksPackage getTotalBricks(HouseDimensions house){
+        BricksCalculator bs = new BricksCalculator();
+        return bs.calculateBricks(house);
+                
+                }
 
 }
